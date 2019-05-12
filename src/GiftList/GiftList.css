@@ -1,0 +1,53 @@
+.giftListContainer {
+    display: flex;
+    flex-direction: column;
+    background: #fae5c9;
+    width: 90vw;
+    max-width: 600px;
+    height: 72vh;
+    margin-top: 4vh;
+    box-sizing: border-box;
+    padding: 2vh;
+    box-shadow: 0 1px 4px -2px black;
+    justify-content: space-between;
+}
+
+.giftList {
+    display: flex;
+    flex-direction: column;
+}
+
+.addGiftBar {
+    display: flex;
+    flex-direction: row;
+    border-radius: 5px;
+    border: none;
+    height: 6.5vh;
+    background-color: #C8AC98;
+}
+
+.addGiftInput {
+    background-color: #C8AC98;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    flex-grow: 1;
+    padding-left: 2vh;
+    font-family: "Roboto Medium", sans-serif;
+    font-size: 3vh;
+    color: #7C6B62;
+}
+
+.addGiftInput:focus {
+    outline: none;
+}
+
+.addGiftIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 5px 5px 0;
+    background-color: #C8AC98;
+    width: 6.5vh;
+    color: #7C6B62;
+}
+

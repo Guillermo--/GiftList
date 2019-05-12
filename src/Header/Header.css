@@ -1,0 +1,88 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    height: 20vh;
+    background: #325f72;
+    box-shadow: 0 1px 4px -2px black;
+}
+
+.headerName {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #ffffff;
+    width: 40vw;
+    box-sizing: border-box;
+    padding: 4vh;
+}
+
+.headerName-line1 {
+    display: flex;
+    font-size: 4vh;
+    font-family: Century Gothic, sans-serif;
+}
+
+.headerName-line2 {
+    display: flex;
+    font-size: 8vh;
+    font-family: GrandHotel, serif;
+    line-height: 7vh;
+}
+
+.headerActions {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.navigation {
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 2vh;
+}
+
+.myPeopleButton {
+    background: none;
+    font-size: 3vh;
+    font-family: "Roboto Light", sans-serif;
+    color: #ffffff;
+    border: none;
+}
+
+.rightArrowIcon {
+    font-size: 2.5vh;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    padding: 1vh 2vh;
+    justify-content: flex-end;
+}
+
+.searchIcon {
+    display: flex;
+    color: #ffffff;
+    background: none;
+    border: none;
+    margin-right: 2vh;
+    padding: 1.5vh;
+    font-size: 3vh;
+}
+
+.filterIcon {
+    display: flex;
+    color: #ffffff;
+    border: none;
+    background: none;
+    padding: 1.5vh;
+    font-size: 3vh;
+}
+
+@font-face {
+    font-family: 'GrandHotel';
+    src: url("../fonts/GrandHotel-Regular.otf");
+}
