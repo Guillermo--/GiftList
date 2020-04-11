@@ -1,9 +1,6 @@
 import React from 'react';
 import './GiftList.css';
 import GiftItem from '../GiftItem/GiftItem';
-import DesktopBreakPoint from '../responsive_utils/DesktopBreakPoint';
-import TabletBreakPoint from '../responsive_utils/TabletBreakPoint';
-import PhoneBreakPoint from '../responsive_utils/PhoneBreakPoint';
 
 const giftMockData = [
     {name: "Scarf"},
