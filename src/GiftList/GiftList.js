@@ -2,33 +2,44 @@ import React from 'react';
 import './GiftList.css';
 import GiftItem from '../GiftItem/GiftItem';
 
-const giftMockData = [
-    {name: "Scarf"},
-    {name: "Card"},
-    {name: "Vaccum"},
-]
-
-const gifts = giftMockData.map(gift => <GiftItem name={gift.name}/>)
-
 
 class GiftList extends React.Component {
+    constructor() {
+        super()
+
+        const giftMockData = [
+            {name: "Scarf"},
+            {name: "Card"},
+            {name: "Vaccum"},
+        ]
+
+        this.state = {
+            gifts: giftMockData.map(gift => <GiftItem name={gift.name}/>)
+        }
+
+        this.addGiftToList = this.addGiftToList.bind(this)
+    }
 
     addGiftToList() {
-        console.log("Attempting to add new gift")
+        this.setState(previousState => {
+            return {
+                gifts: previousState.gifts.concat("New Gift")
+            }
+        })
     }
 
     render() {
         return (
             <div className="giftListContainer">
                 <div className="giftList">
-                    {gifts}
+                    {this.state.gifts}
                 </div>
-                <div className="addGiftBar">
+                <form className="addGiftBar">
                     <input className="addGiftInput" type="text" name="addGift" placeholder="Add a gift..."/>
                     <button className="addGiftIcon" onClick={this.addGiftToList}>
                         <i className="fas fa-plus"/>
                     </button>
-                </div>
+                </form>
             </div>
         )
     }
