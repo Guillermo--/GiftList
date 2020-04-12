@@ -7,15 +7,12 @@ class GiftList extends React.Component {
     constructor() {
         super()
 
-        const giftMockData = [
-            {name: "Scarf"},
-            {name: "Card"},
-        ]
-
         this.state = {
-            gifts: giftMockData.map(gift => <GiftItem name={gift.name}/>),
+            gifts: [],
             giftToAdd: ""
         }
+
+        this.getAllPersistedGifts();
 
         this.addGiftToList = this.addGiftToList.bind(this)
         this.captureGiftToAdd = this.captureGiftToAdd.bind(this)
@@ -36,7 +33,7 @@ class GiftList extends React.Component {
 
         event.preventDefault();
 
-        this.persistLocally(this.state.giftToAdd);
+        this.persistGiftLocally(this.state.giftToAdd);
     }
 
     openIndexedDb() {
@@ -49,21 +46,36 @@ class GiftList extends React.Component {
 
         var openRequest = indexedDB.open("MyDatabase", 1);
 
-        openRequest.onupgradeneeded = function(event) {
+        openRequest.onupgradeneeded = (event) => {
             var database = event.target.result;
             database.createObjectStore("gifts", {keyPath: "id", autoIncrement: true});
-        }
+        };
 
         return openRequest;
     }
 
-    persistLocally(giftName) {
-        console.log("Will attempt to persist " + giftName);
-        
-        var openRequest = this.openIndexedDb();
+    getAllPersistedGifts() {
 
-        openRequest.onsuccess = function(event) {
-            console.log("Opened database successfully");
+        this.openIndexedDb().onsuccess = (event) => {
+            var allGifts = []
+            var database = event.target.result;
+            var transaction = database.transaction("gifts", "readonly");
+            var store = transaction.objectStore("gifts");
+
+            store.getAll().onsuccess = (event) => {
+                allGifts = event.target.result;
+            };
+
+            transaction.oncomplete = () => {
+                this.setState({gifts: allGifts.map(gift => <GiftItem name={gift.name}/>)});
+                console.log("Got all the gifts from the database: \n", allGifts);
+            }
+        }
+    }
+
+    persistGiftLocally(giftName) {        
+
+        this.openIndexedDb().onsuccess = function(event) {
             var database = event.target.result;
             var transaction = database.transaction("gifts", "readwrite");
             var store = transaction.objectStore("gifts");
@@ -74,7 +86,7 @@ class GiftList extends React.Component {
 
             var addRequest = store.add(gift);
 
-            addRequest.onsuccess = function() {
+            addRequest.onsuccess = () => {
                 console.log("Successfully persisted " + giftName);
             }
         }
