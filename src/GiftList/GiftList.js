@@ -10,7 +10,6 @@ class GiftList extends React.Component {
         const giftMockData = [
             {name: "Scarf"},
             {name: "Card"},
-            {name: "Vaccum"},
         ]
 
         this.state = {
@@ -28,14 +27,57 @@ class GiftList extends React.Component {
     }
 
     addGiftToList(event) {
-        event.preventDefault()
-
         this.setState(previousState => {
             return {
                 gifts: previousState.gifts.concat(<GiftItem name={this.state.giftToAdd}/>),
                 giftToAdd: ""
             }
         })
+
+        event.preventDefault();
+
+        this.persistLocally(this.state.giftToAdd);
+    }
+
+    openIndexedDb() {
+        var indexedDB = 
+            window.indexedDB || 
+            window.mozIndexedDB || 
+            window.webkitIndexedDB || 
+            window.msIndexedDB || 
+            window.shimIndexedDB;
+
+        var openRequest = indexedDB.open("MyDatabase", 1);
+
+        openRequest.onupgradeneeded = function(event) {
+            var database = event.target.result;
+            database.createObjectStore("gifts", {keyPath: "id", autoIncrement: true});
+        }
+
+        return openRequest;
+    }
+
+    persistLocally(giftName) {
+        console.log("Will attempt to persist " + giftName);
+        
+        var openRequest = this.openIndexedDb();
+
+        openRequest.onsuccess = function(event) {
+            console.log("Opened database successfully");
+            var database = event.target.result;
+            var transaction = database.transaction("gifts", "readwrite");
+            var store = transaction.objectStore("gifts");
+
+            var gift = {
+                name: giftName,
+            };
+
+            var addRequest = store.add(gift);
+
+            addRequest.onsuccess = function() {
+                console.log("Successfully persisted " + giftName);
+            }
+        }
     }
 
     render() {

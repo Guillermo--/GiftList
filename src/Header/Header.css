@@ -20,13 +20,13 @@
 .headerName-line1 {
     display: flex;
     font-size: 4vh;
-    font-family: Century Gothic, sans-serif;
+    font-family: "Roboto Light";
 }
 
 .headerName-line2 {
     display: flex;
     font-size: 8vh;
-    font-family: GrandHotel, serif;
+    font-family: "GrandHotel Regular", serif;
     line-height: 7vh;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .navigation {
-    display:flex;
+    display: flex;
     justify-content: flex-end;
     align-items: center;
     padding: 2vh;
@@ -46,8 +46,8 @@
 
 .myPeopleButton {
     background: none;
+    font-family: "Roboto Light";
     font-size: 3vh;
-    font-family: "Roboto Light", sans-serif;
     color: #ffffff;
     border: none;
 }
@@ -83,6 +83,11 @@
 }
 
 @font-face {
-    font-family: 'GrandHotel';
+    font-family: "GrandHotel Regular";
     src: url("../fonts/GrandHotel-Regular.otf");
+}
+
+@font-face {
+    font-family: "Roboto Light";
+    src: url("../fonts/Roboto-Light.ttf");
 }

@@ -21,6 +21,11 @@ const isLocalhost = Boolean(
 );
 
 export function register(config) {
+  
+  if (!isIndexedDBSupported) {
+    return;
+  }
+
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
@@ -124,6 +129,14 @@ function checkValidServiceWorker(swUrl, config) {
         'No internet connection found. App is running in offline mode.'
       );
     });
+}
+
+function isIndexedDBSupported() {
+  if (!('indexedDB' in window)) {
+    console.log('This browser doesn\'t support IndexedDB');
+    return false;
+  }
+  return true;
 }
 
 export function unregister() {
