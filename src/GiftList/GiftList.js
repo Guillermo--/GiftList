@@ -14,16 +14,25 @@ class GiftList extends React.Component {
         ]
 
         this.state = {
-            gifts: giftMockData.map(gift => <GiftItem name={gift.name}/>)
+            gifts: giftMockData.map(gift => <GiftItem name={gift.name}/>),
+            giftToAdd: ""
         }
 
         this.addGiftToList = this.addGiftToList.bind(this)
+        this.captureGiftToAdd = this.captureGiftToAdd.bind(this)
+
+    }
+
+    captureGiftToAdd(event) {
+        this.setState({giftToAdd: event.target.value})
+        console.log("Gift to add: " + this.state.giftToAdd)
     }
 
     addGiftToList() {
+        console.log("Will set " + this.state.giftToAdd)
         this.setState(previousState => {
             return {
-                gifts: previousState.gifts.concat("New Gift")
+                gifts: previousState.gifts.concat(<GiftItem name={this.state.giftToAdd}/>)
             }
         })
     }
@@ -35,7 +44,7 @@ class GiftList extends React.Component {
                     {this.state.gifts}
                 </div>
                 <form className="addGiftBar">
-                    <input className="addGiftInput" type="text" name="addGift" placeholder="Add a gift..."/>
+                    <input className="addGiftInput" onChange={this.captureGiftToAdd} type="text" name="giftToAdd" placeholder="Add a gift..."/>
                     <button className="addGiftIcon" onClick={this.addGiftToList}>
                         <i className="fas fa-plus"/>
                     </button>
