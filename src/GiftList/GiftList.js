@@ -25,11 +25,9 @@ class GiftList extends React.Component {
 
     captureGiftToAdd(event) {
         this.setState({giftToAdd: event.target.value})
-        console.log("Gift to add: " + this.state.giftToAdd)
     }
 
     addGiftToList() {
-        console.log("Will set " + this.state.giftToAdd)
         this.setState(previousState => {
             return {
                 gifts: previousState.gifts.concat(<GiftItem name={this.state.giftToAdd}/>)
