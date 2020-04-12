@@ -27,10 +27,13 @@ class GiftList extends React.Component {
         this.setState({giftToAdd: event.target.value})
     }
 
-    addGiftToList() {
+    addGiftToList(event) {
+        event.preventDefault()
+
         this.setState(previousState => {
             return {
-                gifts: previousState.gifts.concat(<GiftItem name={this.state.giftToAdd}/>)
+                gifts: previousState.gifts.concat(<GiftItem name={this.state.giftToAdd}/>),
+                giftToAdd: ""
             }
         })
     }
@@ -38,11 +41,16 @@ class GiftList extends React.Component {
     render() {
         return (
             <div className="giftListContainer">
-                <div className="giftList">
-                    {this.state.gifts}
-                </div>
+                <div className="giftList">{this.state.gifts}</div>
+
                 <form className="addGiftBar">
-                    <input className="addGiftInput" onChange={this.captureGiftToAdd} type="text" name="giftToAdd" placeholder="Add a gift..."/>
+                    <input 
+                        className="addGiftInput" 
+                        onChange={this.captureGiftToAdd} 
+                        value={this.state.giftToAdd}
+                        type="text" 
+                        placeholder="Add a gift..."
+                    />
                     <button className="addGiftIcon" onClick={this.addGiftToList}>
                         <i className="fas fa-plus"/>
                     </button>
