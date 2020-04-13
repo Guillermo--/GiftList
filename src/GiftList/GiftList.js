@@ -12,7 +12,7 @@ class GiftList extends React.Component {
             giftToAdd: ""
         }
 
-        this.getAllPersistedGifts();
+        this.setupAllPersistedGifts();
 
         this.addGiftToList = this.addGiftToList.bind(this)
         this.captureGiftToAdd = this.captureGiftToAdd.bind(this)
@@ -24,6 +24,8 @@ class GiftList extends React.Component {
     }
 
     addGiftToList(event) {
+        this.persistGiftLocally(this.state.giftToAdd);
+
         this.setState(previousState => {
             return {
                 gifts: previousState.gifts.concat(<GiftItem name={this.state.giftToAdd}/>),
@@ -32,8 +34,6 @@ class GiftList extends React.Component {
         })
 
         event.preventDefault();
-
-        this.persistGiftLocally(this.state.giftToAdd);
     }
 
     openIndexedDb() {
@@ -54,7 +54,7 @@ class GiftList extends React.Component {
         return openRequest;
     }
 
-    getAllPersistedGifts() {
+    setupAllPersistedGifts() {
 
         this.openIndexedDb().onsuccess = (event) => {
             var allGifts = []
@@ -67,7 +67,11 @@ class GiftList extends React.Component {
             };
 
             transaction.oncomplete = () => {
-                this.setState({gifts: allGifts.map(gift => <GiftItem name={gift.name}/>)});
+                this.setState({
+                    gifts: allGifts.map(gift => 
+                        <GiftItem name={gift.name} key={gift.id}/>)
+                });
+
                 console.log("Got all the gifts from the database: \n", allGifts);
             }
         }
@@ -75,7 +79,7 @@ class GiftList extends React.Component {
 
     persistGiftLocally(giftName) {        
 
-        this.openIndexedDb().onsuccess = function(event) {
+        this.openIndexedDb().onsuccess = (event) => {
             var database = event.target.result;
             var transaction = database.transaction("gifts", "readwrite");
             var store = transaction.objectStore("gifts");
@@ -87,7 +91,7 @@ class GiftList extends React.Component {
             var addRequest = store.add(gift);
 
             addRequest.onsuccess = () => {
-                console.log("Successfully persisted " + giftName);
+                console.log("Successfully persisted '" + giftName + "'");
             }
         }
     }

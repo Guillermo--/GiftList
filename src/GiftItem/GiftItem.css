@@ -1,22 +1,22 @@
 .giftItemContainer {
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid #c8ac98;
     height: 9vh;
     align-items: stretch;
     box-sizing: border-box;
-    padding: 1.5vh;
+    /* border: 1px solid; */
 }
 
 .pinIcon {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     border: none;
     background: none;
     flex-grow: 0.05;
     font-size: 3vh;
     color: #99b8b4;
+    /* border: 1px solid; */
 }
 
 .giftName {
@@ -25,18 +25,18 @@
     font-size: 4vh;
     font-family: "Roboto Mono Light";
     flex-grow: 1;
-    padding-left: 3vw;
+    color: #646695;
 }
 
 .menuIcon {
     display: flex;
     align-items: center;
-    justify-content: center;
-    border: none;
+    justify-content: flex-end;
     background: none;
     flex-grow: 0.05;
     font-size: 3vh;
-    color: #325f72;
+    color: #646695;
+    border: none;
 }
 
 @font-face {

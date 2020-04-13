@@ -1,13 +1,13 @@
 .giftListContainer {
     display: flex;
     flex-direction: column;
-    background: #fae5c9;
+    background: #252526;
     width: 90vw;
     max-width: 600px;
     height: 72vh;
     margin-top: 4vh;
     box-sizing: border-box;
-    padding: 2vh;
+    padding: 4vh 7vh 4vh 7vh;
     box-shadow: 0 1px 4px -2px black;
     justify-content: space-between;
 }
@@ -23,11 +23,11 @@
     border-radius: 5px;
     border: none;
     height: 6.5vh;
-    background-color: #C8AC98;
+    background-color: #a6a6a6;
 }
 
 .addGiftInput {
-    background-color: #C8AC98;
+    background-color: #a6a6a6;
     border: none;
     border-radius: 5px 0 0 5px;
     flex-grow: 1;
@@ -46,10 +46,10 @@
     align-items: center;
     justify-content: center;
     border-radius: 0 5px 5px 0;
-    background-color: #C8AC98;
+    background-color: #a6a6a6;
     border: none;
     width: 6.5vh;
-    color: #7C6B62;
+    color: #404040;
 }
 
 @font-face {
