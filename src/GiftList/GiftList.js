@@ -109,7 +109,7 @@ class GiftList extends React.Component {
                         type="text" 
                         placeholder="Add a gift..."
                     />
-                    <button className="addGiftIcon" onClick={this.addGiftToList}>
+                    <button className="addGiftButton" onClick={this.addGiftToList}>
                         <i className="fas fa-plus"/>
                     </button>
                 </form>

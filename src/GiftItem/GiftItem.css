@@ -10,11 +10,11 @@
 .pinIcon {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     border: none;
     background: none;
     flex-grow: 0.05;
-    font-size: 3vh;
+    font-size: 2.5vh;
     color: #99b8b4;
     /* border: 1px solid; */
 }
@@ -22,20 +22,21 @@
 .giftName {
     display: flex;
     align-items: center;
-    font-size: 4vh;
+    font-size: 3.5vh;
     font-family: "Roboto Mono Light";
     flex-grow: 1;
-    color: #646695;
+    color: #569CD6;
+    padding-left: 2vh;
 }
 
 .menuIcon {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     background: none;
     flex-grow: 0.05;
     font-size: 3vh;
-    color: #646695;
+    color: #569CD6;
     border: none;
 }
 

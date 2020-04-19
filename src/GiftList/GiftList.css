@@ -4,10 +4,11 @@
     background: #252526;
     width: 90vw;
     max-width: 600px;
-    height: 72vh;
+    min-height: 72vh;
     margin-top: 4vh;
+    margin-bottom: 4vh;
     box-sizing: border-box;
-    padding: 4vh 7vh 4vh 7vh;
+    padding: 4vh 4vh 4vh 4vh;
     box-shadow: 0 1px 4px -2px black;
     justify-content: space-between;
 }
@@ -22,26 +23,31 @@
     flex-direction: row;
     border-radius: 5px;
     border: none;
-    height: 6.5vh;
+    margin-top: 6vh;
+    min-height: 6.5vh;
     background-color: #a6a6a6;
+    /* border: 1px solid red; */
 }
 
 .addGiftInput {
+    display: flex;
     background-color: #a6a6a6;
-    border: none;
-    border-radius: 5px 0 0 5px;
     flex-grow: 1;
+    border: none;
+    /* border: 1px solid green; */
+    border-radius: 5px 0 0 5px;
     padding-left: 2vh;
-    font-family: "Roboto Regular";
+    font-family: "Roboto Mono Regular";
     font-size: 3vh;
-    color: #7C6B62;
+    color: #3a3d41;
+    min-width: 0;
 }
 
-.addGiftInput:focus {
+.addGiftButton:focus {
     outline: none;
 }
 
-.addGiftIcon {
+.addGiftButton {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,9 +56,11 @@
     border: none;
     width: 6.5vh;
     color: #404040;
+    /* border: 1px solid blue; */
+
 }
 
 @font-face {
-    font-family: "Roboto Regular";
-    src: url("../fonts/Roboto-Regular.ttf");
+    font-family: "Roboto Mono Regular";
+    src: url("../fonts/RobotoMono-Regular.ttf");
 }
