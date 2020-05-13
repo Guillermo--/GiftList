@@ -10,24 +10,25 @@
 .headerName {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     color: #4EC9B0;
     width: 40vw;
     box-sizing: border-box;
-    padding: 6vh;
+    padding-left: 4vh;
+    padding-top: 4vh;
 }
 
 .headerName-line1 {
     display: flex;
-    font-size: 4vh;
+    font-size: 3vh;
     font-family: "Roboto Light";
 }
 
 .headerName-line2 {
     display: flex;
-    font-size: 8vh;
+    font-size: 6vh;
     font-family: "GrandHotel Regular", serif;
-    line-height: 7vh;
+    line-height: 5vh;
 }
 
 .headerActions {
@@ -47,14 +48,15 @@
 
 .myPeopleButton {
     background: none;
-    font-family: "Roboto Light";
-    font-size: 2.5vh;
+    font-family: "GrandHotel Regular";
+    font-size: 3.5vh;
     color: #ffffff;
     border: none;
 }
 
 .rightArrowIcon {
     font-size: 2vh;
+    padding-left: 1vh;
 }
 
 .actions {

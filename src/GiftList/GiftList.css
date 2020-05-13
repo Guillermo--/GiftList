@@ -24,7 +24,7 @@
     border-radius: 5px;
     border: none;
     margin-top: 6vh;
-    min-height: 6.5vh;
+    height: 5vh;
     background-color: #a6a6a6;
     /* border: 1px solid red; */
 }
@@ -38,7 +38,7 @@
     border-radius: 5px 0 0 5px;
     padding-left: 2vh;
     font-family: "Roboto Mono Regular";
-    font-size: 3vh;
+    font-size: 2.5vh;
     color: #3a3d41;
     min-width: 0;
 }
@@ -57,7 +57,11 @@
     width: 6.5vh;
     color: #404040;
     /* border: 1px solid blue; */
+}
 
+.addGiftIcon {
+    display: flex;
+    font-size: 2.5vh;;
 }
 
 @font-face {
